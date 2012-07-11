@@ -6,6 +6,7 @@ strong italic
 font size
 font family
 link
+h1 h2
 解决：1)用 webkit 渲染后将多余 style 清除，合并 style，重新生成文档。
 2)用现有工具清除。
 

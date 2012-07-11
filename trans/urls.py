@@ -18,6 +18,6 @@ urlpatterns = patterns('',
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
     # MEDIA dirs can store uploaded images, files.  TODO: open it when needed.
-    #(r'^%s/(?P<path>.*)$' % MEDIA_URL.strip('/\\'), 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
+    (r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/\\'), 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     # STATIC dirs is used as prefix for js css, and set in django.conf.settings
 )
