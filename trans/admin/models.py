@@ -1,8 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User as AdminUser
+#from django.contrib.auth.models import User as AdminUser
 from django.db.models import ForeignKey, CharField, URLField, BooleanField, EmailField, IPAddressField, DateField
 class User(models.Model):
-	user = ForeignKey(AdminUser)
+	#user = ForeignKey(AdminUser)
+	username = CharField(max_length=50)
 	nickname = CharField(max_length=50)
 	ip = IPAddressField()
 	email = EmailField(max_length=50)
