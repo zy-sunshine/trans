@@ -10,4 +10,4 @@ class BookInfoForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
 	class Meta:
 		model = User
-		fields = ('user', 'nickname', 'email', 'site', 'isAdmin', 'isAuthor')
+		fields = ('nickname', 'email', 'site', 'isAdmin', 'isAuthor')
