@@ -1,4 +1,4 @@
-from utils.base import SiteRequestHandler
+from trans.utils.base import SiteRequestHandler
 
 class Home(SiteRequestHandler):
     def __init__(self):
@@ -11,8 +11,8 @@ class Home(SiteRequestHandler):
     # def HEAD(self,page=1):
     #     if self.blog.allow_pingback:
     #         self.response.headers['X-Pingback']="%s/rpc"%str(self.blog.baseurl)
-    def GET(self, page = 1):
-        postid=self.param('p')
+    def GET(self):
+        #postid=self.param('p')
         context = { }
         self.render('trans/index.html', context)
 
@@ -27,7 +27,13 @@ class Home(SiteRequestHandler):
     #             self.error(404)
 
 class Chapter(SiteRequestHandler):
-    def GET(self, book = '', idx = 1):
+    def GET(self, book = '', chapterIdx = 1):
         context = {'book': book,
-                   'idx': idx}
+                   'chapterIdx': chapterIdx}
         self.render('trans/chapter.html', context)
+
+class BookToc(SiteRequestHandler):
+    def GET(self, book=''):
+        context = {}
+        self.render('trans/booktoc.html', context)
+        

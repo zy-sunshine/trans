@@ -66,7 +66,8 @@ STATIC_ROOT = ''
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
-
+IMAGES_URL = '/images/'
+IMAGES_ROOT = os.path.join(ROOT_PATH, 'static', 'images')
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(ROOT_PATH, 'static'),
@@ -96,7 +97,9 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+
+    #'django.middleware.csrf.CsrfViewMiddleware',
+
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
@@ -111,6 +114,7 @@ WSGI_APPLICATION = 'trans.wsgi.application'
 TEMPLATE_CONTEXT_PROCESSORS = {
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.static',
+    'django.core.context_processors.csrf',
     #'django.core.context_processors.auth',
     #'django.core.context_processors.debug',
     #'django.core.context_processors.i18n',
@@ -132,9 +136,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'admin',
+    'trans.admin',
+    'trans.comments',
+    'trans.translations',
+    'trans.books',
     # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
+    #'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

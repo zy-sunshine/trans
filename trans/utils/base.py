@@ -14,7 +14,7 @@ from django.core import urlresolvers
 #import configs
 #from utils.shortcuts import get_absolute_path
 
-from admin.models import User
+from trans.admin.models import User
 #from functools import wraps
 
 from django.template import TemplateDoesNotExist
@@ -127,8 +127,9 @@ class SiteRequestHandler(TemplateView):
         #self.login_user = users.get_current_user()
         self.login_user = auth.authenticate(username='john', password='secret')
         self.is_login = (self.login_user is not None)
-        self.loginurl=reverse(login)#users.create_login_url(self.request.path)
-        self.logouturl=reverse(logout)#users.create_logout_url(self.request.path)
+        ### TODO
+        #   self.loginurl=reverse(login)#users.create_login_url(self.request.path)
+        #   self.logouturl=reverse(logout)#users.create_logout_url(self.request.path)
         #self.is_admin = users.is_current_user_admin()
         self.is_admin = False # TODO: make it valid
         # three status: admin author login
@@ -197,22 +198,27 @@ class SiteRequestHandler(TemplateView):
 
     def render(self, template_file, params={}, mimetype=None, status=None,
             content_type=None):
+        tpl = loader.get_template(template_file)
+        self.renderImpl(tpl, params, mimetype, status, content_type)
+
+    def renderEx(self, template, params={}, mimetype=None, status=None,
+            content_type=None):
+        self.renderImpl(template, params, mimetype, status, content_type)
+
+    def renderImpl(self, template, params={}, mimetype=None, status=None,
+            content_type=None):
         """
         Helper method to render the appropriate template
         """
         params.update(self.template_vals)
-        t = loader.get_template(template_file)
         c = RequestContext(self.request, params)
-        self.response.write(t.render(c))
+        self.response.write(template.render(c))
         if mimetype:
             content_type = mimetype
         if content_type:
             self.response['Content-Type'] = content_type
-        #response = HttpResponse(t.render(c), **kargs)
-        
-    def render2(self, template_file, params={}, **kargs):
-        self.render(template_file, params, **kargs)
-    
+        #response = HttpResponse(template.render(c), **kargs)
+
     def render2_bak(self, template_file, params={}):
         """
         Helper method to render the appropriate template
