@@ -88,5 +88,4 @@ def get_absolute_path(request, relative_path = ''):
 def register_templatetags(templatetags):
     for templatetag in templatetags:
         if not django.template.libraries.get(templatetag, None):
-            #django.template.add_to_builtins(templatetag)
             django.template.loader.add_to_builtins(templatetag)

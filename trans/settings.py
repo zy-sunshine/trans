@@ -71,6 +71,7 @@ IMAGES_ROOT = os.path.join(ROOT_PATH, 'static', 'images')
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(ROOT_PATH, 'static'),
+    os.path.join(ROOT_PATH, 'static', 'twitter-bootstrap'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -112,14 +113,13 @@ ROOT_URLCONF = 'trans.urls'
 WSGI_APPLICATION = 'trans.wsgi.application'
 
 TEMPLATE_CONTEXT_PROCESSORS = {
-    'django.contrib.auth.context_processors.auth',
+    #'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.static',
     'django.core.context_processors.csrf',
-    #'django.core.context_processors.auth',
-    #'django.core.context_processors.debug',
-    #'django.core.context_processors.i18n',
-    #'django.core.context_processors.media',
-    #'django.core.context_processors.request',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
     'context_processors.common',
 }
 TEMPLATE_DIRS = (
@@ -154,6 +154,11 @@ INSTALLED_APPS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+    'standard': {
+        'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(levelname)s]- %(message)s'
+        },
+    },
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
@@ -164,7 +169,15 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+        'default':{
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(ROOT_PATH, 'logs','all.log'),
+            'maxBytes': 1024*1024*5,
+            'backupCount': 5,
+            'formatter':'standard',
+        },
     },
     'loggers': {
         'django.request': {
@@ -172,9 +185,16 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-    }
+        'django': {
+            'handlers': ['default'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+
 }
 
 SITE_CONFIG = {
     'title' : 'Translate Website',
+    'jquery_path': 'js/jquery-1.7.2.js',
 }

@@ -1,0 +1,148 @@
+[
+  {
+    "pk": 9,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "bookinfo",
+      "name": "book info",
+      "app_label": "books"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "comments",
+      "name": "comments",
+      "app_label": "comments"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "contenttype",
+      "name": "content type",
+      "app_label": "contenttypes"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "lang",
+      "name": "lang",
+      "app_label": "books"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "paragraph",
+      "name": "paragraph",
+      "app_label": "books"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "session",
+      "name": "session",
+      "app_label": "sessions"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "site",
+      "name": "site",
+      "app_label": "sites"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "tocinfo",
+      "name": "toc info",
+      "app_label": "books"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "user",
+      "name": "user",
+      "app_label": "admin"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "sites.site",
+    "fields": {
+      "domain": "example.com",
+      "name": "example.com"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "admin.user",
+    "fields": {
+      "username": "zy_sunshine",
+      "isAuthor": true,
+      "ip": "0.0.0.0",
+      "site": "http://www.baidu.com",
+      "datetime": "2012-07-13",
+      "isAdmin": false,
+      "nickname": "sunshine",
+      "email": "zy.netsec@gmail.com"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "admin.user",
+    "fields": {
+      "username": "admin",
+      "isAuthor": true,
+      "ip": "0.0.0.0",
+      "site": "http://www.sample.com",
+      "datetime": "2012-07-13",
+      "isAdmin": true,
+      "nickname": "admin",
+      "email": "admin@sample.com"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "books.bookinfo",
+    "fields": {
+      "lang_orig_fk": 1,
+      "name": "",
+      "datetime": "2012-07-13",
+      "link_orig": "",
+      "heros": [
+        1,
+        2
+      ],
+      "description": "sdaf"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "books.lang",
+    "fields": {
+      "name": "us-EN"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "books.lang",
+    "fields": {
+      "name": "zh-CN"
+    }
+  }
+]

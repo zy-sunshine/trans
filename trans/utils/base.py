@@ -125,8 +125,10 @@ class SiteRequestHandler(TemplateView):
         TemplateView.initialize(self, request)
         ## some for authorize
         #self.login_user = users.get_current_user()
-        self.login_user = auth.authenticate(username='john', password='secret')
-        self.is_login = (self.login_user is not None)
+        ### TODO
+        #  self.login_user = auth.authenticate(username='john', password='secret')
+        #  self.is_login = (self.login_user is not None)
+        self.is_login = False
         ### TODO
         #   self.loginurl=reverse(login)#users.create_login_url(self.request.path)
         #   self.logouturl=reverse(logout)#users.create_logout_url(self.request.path)
@@ -262,8 +264,12 @@ class SiteRequestHandler(TemplateView):
            return default
            
     def paramlist(self, name, **kw):
-        lst = self.param(name)
-        return lst and lst.split(',') or []
+        method = getattr(self.request, self.request.method)
+        method2 = getattr(self.request, self.request.method == 'GET' and 'POST' or 'GET')
+        ret = method.getlist(name)
+        if not ret:
+            ret = method2.getlist(name, **kw)
+        return ret and ret or ''
         
     def write(self, s):
         self.response.out.write(s)
