@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile{% endblock %}
+ 
+{% block content %}
+<a target='_blank' href="http://birdhouse.org/blog/2009/06/27/django-profiles/">more tutorial</a>
+<h1>Edit contact info for {{ user }}</h1>
+<form action="" method="POST">{{ form }} <input id="submit" type="submit" name="submit" value="Update" /></form>
+ 
+{% endblock content %}

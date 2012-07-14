@@ -101,7 +101,7 @@ MIDDLEWARE_CLASSES = (
 
     #'django.middleware.csrf.CsrfViewMiddleware',
 
-    #'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -112,8 +112,8 @@ ROOT_URLCONF = 'trans.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'trans.wsgi.application'
 
-TEMPLATE_CONTEXT_PROCESSORS = {
-    #'django.contrib.auth.context_processors.auth',
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.static',
     'django.core.context_processors.csrf',
     'django.core.context_processors.debug',
@@ -121,7 +121,8 @@ TEMPLATE_CONTEXT_PROCESSORS = {
     'django.core.context_processors.media',
     'django.core.context_processors.request',
     'context_processors.common',
-}
+    'django.contrib.messages.context_processors.messages',
+)
 TEMPLATE_DIRS = (
     os.path.join(ROOT_PATH, 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -130,7 +131,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    #'django.contrib.auth',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
@@ -140,6 +141,9 @@ INSTALLED_APPS = (
     'trans.comments',
     'trans.translations',
     'trans.books',
+    'registration',
+    'profiles',
+    #'profile',
     # Uncomment the next line to enable the admin:
     #'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -198,3 +202,13 @@ SITE_CONFIG = {
     'title' : 'Translate Website',
     'jquery_path': 'js/jquery-1.7.2.js',
 }
+
+### For registration
+ACCOUNT_ACTIVATION_DAYS=7
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'magiclinuxgroup'
+EMAIL_HOST_PASSWORD = 'mayunxin'
+EMAIL_PORT = 587
+
+AUTH_PROFILE_MODULE = 'admin.User'

@@ -121,13 +121,10 @@
     "model": "books.bookinfo",
     "fields": {
       "lang_orig_fk": 1,
-      "name": "",
+      "name": "testname",
       "datetime": "2012-07-13",
       "link_orig": "",
-      "heros": [
-        1,
-        2
-      ],
+      "slug": "testslug",
       "description": "sdaf"
     }
   },

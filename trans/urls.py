@@ -21,11 +21,16 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     #url(r'^admin/', include(admin.site.urls)),
+    #url(r'^accounts/', include('registration.urls')),
+    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^accounts/profiles/', include('profiles.urls')),
+    
     url(r'^admin/', include(trans.admin.urls)),
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
-    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
+    #url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    #url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
     # MEDIA dirs can store uploaded images, files.  TODO: open it when needed.
     (r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/\\'), 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
     (r'^%s/(?P<path>.*)$' % settings.IMAGES_URL.strip('/\\'), 'django.views.static.serve', {'document_root': settings.IMAGES_ROOT, 'show_indexes': True}),
     # STATIC dirs is used as prefix for js css, and set in django.conf.settings
+
 )

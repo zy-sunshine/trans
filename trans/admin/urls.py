@@ -15,3 +15,6 @@ urlpatterns += patterns('trans.admin.ajax',
 	url(r'^check/book_slug_unique/$', 'BookSlugUnique'),
 	url(r'^ajax/get_toclist/$', 'GetToclist')
 )
+urlpatterns += patterns('trans.admin.authviews',
+	url(r'^login/$', 'Login', name='admin_login'),
+	)
