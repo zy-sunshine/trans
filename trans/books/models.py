@@ -7,7 +7,7 @@ class BookInfo(models.Model):
 	user = User()
 	link_orig = URLField()
 	name = CharField(max_length=200)
-	slug = SlugField()
+	slug = SlugField(unique=True)
 	lang_orig_fk = ForeignKey('Lang', verbose_name='Lang orig')
 	heros = ManyToManyField(User)
 	description = TextField()
@@ -21,7 +21,7 @@ class Lang(models.Model):
 class TocInfo(models.Model):
 	bookinfo_fk = ForeignKey('BookInfo')
 	name = CharField(max_length=100, verbose_name='Toc Name')
-	slug = SlugField()
+	slug = SlugField(unique=True)
 
 class Paragraph(models.Model):
 	tocinfo_fk = ForeignKey('TocInfo')

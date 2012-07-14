@@ -9,10 +9,16 @@
     {% for book in books %}
     <tr>
       <td><span>{{ book.name }}</span></td>
-      <td><a class="btn" href="/admin/editbook/{{ book.slug }}/">edit</a></td>
+      <td>
+        <a class="btn" href="/admin/editbook/{{ book.slug }}/">edit book</a>
+        <a id="id_showtoc" class="btn" href="#{{ book.slug }}">show toc</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
   </table>
 </div>
+{% endblock %}
+{% block script %}
+<script src="{{ STATIC_URL }}js/admin.listbook.js"></script>
 {% endblock %}

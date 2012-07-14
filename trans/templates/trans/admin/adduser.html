@@ -1,5 +1,11 @@
 {% extends "trans/admin/base.html" %}
 {% block title %} Add User {% endblock %}
 {% block content %}
+<div class="container-fluid">
 {% include "trans/snippet/form.style.html" %}
+</div>
+{% endblock %}
+{% block script %}
+<script src="{{ STATIC_URL }}js/jquery.slugify.js"></script>
+<script src="{{ STATIC_URL }}js/admin.adduser.js"></script>
 {% endblock %}

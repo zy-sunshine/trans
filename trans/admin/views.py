@@ -22,7 +22,7 @@ tpl = Template('''
 
 class Index(SiteRequestHandler):
 	def GET(self):
-		self.write('Admin Index Page!')
+		self.render('trans/admin/index.html')
 
 class AddBook(SiteRequestHandler):
 	def POST(self):
@@ -66,12 +66,14 @@ class ListBooks(SiteRequestHandler):
 
 class AddToc(SiteRequestHandler):
 	def POST(self, book=''):
-		self.write('%s submit success' % book)
+		name = self.param('name')
+		content = self.param('content')
+		self.write('%s submit success name: %s content: %s' % (book, name, content))
 
 	def GET(self, book=''):
 		form = TocInfoForm()
-		context = {'form': form, 'action': '/admin/addtoc/', 'ext_var': book}
-		self.renderEx(tpl, context)
+		context = {'form': form, 'action': '/admin/addtoc/book/%s/' % book}
+		self.render('trans/admin/addtoc.html', context)
 
 class AddUser(SiteRequestHandler):
 

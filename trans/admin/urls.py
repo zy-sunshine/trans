@@ -11,3 +11,7 @@ urlpatterns = patterns('trans.admin.views',
 	url(r'^listbooks/$', 'ListBooks', name='admin_listbooks'),
     url(r'^editbook/(?P<slug>[^/]*)/$', 'EditBook', name='admin_editbook'),
 )
+urlpatterns += patterns('trans.admin.ajax',
+	url(r'^check/book_slug_unique/$', 'BookSlugUnique'),
+	url(r'^ajax/get_toclist/$', 'GetToclist')
+)
