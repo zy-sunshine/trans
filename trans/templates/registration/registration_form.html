@@ -1,6 +1,7 @@
 {% extends "registration/registration_base.html" %}
 {% block title %}Register for an account{% endblock %}
 {% block content %}
+<a target="_blank" href="http://docs.b-list.org/django-registration/0.8/">more tutorial</a>
 <table>
     <form method='post' action=''>{% csrf_token %}
         {{ form }}
