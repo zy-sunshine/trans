@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- this is the table that shows the user information -->
+<table class="zebra-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr data-href="/users/edit/id/1">
+			<td>$user->$field;</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- this is the placeholder for the modal box -->
+<div id="modal-editUser" class="modal hide">
+	<!-- content will go here -->
+</div>
+
+<!-- this is the code that makes it all happen -->
+
+{% endblock %}
+{% block script %}
+<script src="{{ STATIC_URL }}js/tests.model.js"></script>
+{% endblock %}

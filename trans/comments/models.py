@@ -1,6 +1,5 @@
 from django.db import models
-from trans.admin.models import User
-from django.db.models import ForeignKey, TextField, DateField, CharField, EmailField, IPAddressField, URLField
+from django.db.models import ForeignKey, TextField, DateTimeField, CharField, EmailField, IPAddressField, URLField
 from trans.books.models import TocInfo
 
 class Comments(models.Model):
@@ -10,4 +9,4 @@ class Comments(models.Model):
 	ip = IPAddressField()
 	site = URLField()
 	comment = TextField()
-	datetime = DateField(auto_now=True)
+	datetime = DateTimeField(auto_now=True)

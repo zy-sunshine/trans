@@ -1,4 +1,5 @@
 {% load base_extras %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,6 +11,7 @@
 
     <!-- Le styles -->
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ STATIC_URL }}jquery-ui/themes/base/jquery.ui.all.css">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -54,22 +56,22 @@
             <ul class="dropdown-menu">
               <li><a href="#">Profile</a></li>
               <li class="divider"></li>
-              <li><a href="{% url auth_logout %}">Sign Out</a></li>
+              <li><a href="{% url auth_logout %}">{% trans "Sign Out" %}</a></li>
             </ul>
           </div>
           {% endif %}
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="{% url admin_index %}">Home</a></li>
+              <li class="active"><a href="{% url manage_index %}">{% trans "Home" %}</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
             {% if not request.user.is_authenticated %}
-            <form class="form-inline pull-right" action="{% url admin_login %}" method="POST">
+            <form class="form-inline pull-right" action="{% url manage_login %}" method="POST">
               {% csrf_token %}
               <input id="username" name="username" type="text" class="input-small" placeholder="User">
               <input id="password" name="password" type="password" class="input-small" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
+              <button type="submit" class="btn">{% trans "Sign in" %}</button>
             </form>
             {% endif %}
           </div><!--/.nav-collapse -->
@@ -91,9 +93,9 @@
               <li class="nav-header">Manage Users</li>
               <li class="{% navactive 'registration_register' %}"><a href="{% url registration_register %}">Registration User</a></li>
               <li class="nav-header">Manage Books</li>
-              <li class="{% navactive 'admin_listbooks' %}"><a href="{% url admin_listbooks %}">List Books</a></li>
-              <li class="{% navactive 'admin_addbook' %}"><a href="{% url admin_addbook %}">Add Book</a></li>
-              <li class="{% navactive 'admin_addlang' %}"><a href="{% url admin_addlang %}">Add Lang</a></li>
+              <li class="{% navactive 'manage_listbooks' %}"><a href="{% url manage_listbooks %}">{% trans "List Books" %}</a></li>
+              <li class="{% navactive 'manage_addbook' %}"><a href="{% url manage_addbook %}">{% trans "Add Book" %}</a></li>
+              <li class="{% navactive 'manage_addlang' %}"><a href="{% url manage_addlang %}">{% trans "Add Lang" %}</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -115,7 +117,41 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ STATIC_URL }}js/underscore.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <!-- <script src="{{ STATIC_URL }}js/jquery.js"></script> -->
+    <script src="{{ STATIC_URL }}jquery-ui/jquery-1.7.2.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/external/jquery.bgiframe-2.1.2.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/external/jquery.bgiframe-2.1.2.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.core.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.widget.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.mouse.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.accordion.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.autocomplete.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.button.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.datepicker.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.dialog.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.draggable.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.droppable.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.position.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.progressbar.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.resizable.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.selectable.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.slider.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.sortable.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.ui.tabs.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.core.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.blind.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.bounce.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.clip.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.drop.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.explode.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.fold.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.highlight.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.pulsate.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.scale.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.shake.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.slide.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/ui/jquery.effects.transfer.js"></script>
+
     <script src="{{ STATIC_URL }}js/bootstrap-transition.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap-alert.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap-modal.js"></script>

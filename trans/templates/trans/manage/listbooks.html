@@ -1,4 +1,5 @@
-{% extends "trans/admin/base.html" %}
+{% extends "base.html" %}
+{% load i18n %}
 {% block title %} List Books {% endblock %}
 {% block content %}
 <div class="container-fluid">
@@ -10,8 +11,9 @@
     <tr>
       <td><span>{{ book.name }}</span></td>
       <td>
-        <a class="btn" href="/admin/editbook/{{ book.slug }}/">edit book</a>
-        <a id="id_showtoc" class="btn" href="#{{ book.slug }}">show toc</a>
+        <a class="btn" href="/manage/editbook/{{ book.slug }}/">{% trans "Edit Book" %}</a>
+        <a id="id_showtoc" class="btn" href="#{{ book.slug }}">{% trans "Show Toc ..." %}</a>
+        <!-- <a data-toggle="modal" href="#myModal" class="btn">{% trans "Show Toc ..." %}</a> -->
       </td>
     </tr>
     {% endfor %}
@@ -20,5 +22,5 @@
 </div>
 {% endblock %}
 {% block script %}
-<script src="{{ STATIC_URL }}js/admin.listbook.js"></script>
+<script src="{{ STATIC_URL }}js/manage.listbook.js"></script>
 {% endblock %}

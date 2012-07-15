@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} Edit Toc {% endblock %}
+{% block content %}
+<div class="container-fluid">
+	<!--
+<style>
+ul.nostyle {list-style-type: none;}
+</style>
+<ul id="sortable" class='nostyle'>
+	<li class="ui-state-default">Item 1</li>
+	<li class="ui-state-default">Item 2</li>
+	<li class="ui-state-default">Item 3</li>
+	<li class="ui-state-default">Item 4</li>
+	<li class="ui-state-default">Item 5</li>
+	<li class="ui-state-default">Item 6</li>
+	<li class="ui-state-default">Item 7</li>
+</ul>
+-->
+<div class="column">
+{% for p in para %}
+	<div class="portlet">
+		<div class="portlet-header">Tag: {{ p.tag }} Hero: {{ p.user }} Modify: {{ p.datetime }}</div>
+		<div class="portlet-content">{{ p.content }}</div>
+	</div>
+{% endfor %}
+
+</div>
+
+</div>
+{% endblock %}
+{% block script %}
+<script src="{{ STATIC_URL }}js/manage.edittoc.js"></script>
+{% endblock %}

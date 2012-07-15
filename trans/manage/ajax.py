@@ -22,10 +22,11 @@ class GetToclist(SiteRequestHandler):
 		book = BookInfo.objects.get(slug = slug)
 		ajax_str = ''
 		tocs = TocInfo.objects.filter(bookinfo_fk = book)
+		[{'name': 'namestr', 'slug': 'slugstr'}]
 		if tocs:
 			ajax_str = '['
 			for toc in tocs:
-				ajax_str += '"%s",' % toc
+				ajax_str += '{"name": "%s", "slug": "%s"},' % (toc.name, toc.slug)
 				Log.info(toc)
 			ajax_str = ajax_str.rstrip(',') + ']'
 		else:

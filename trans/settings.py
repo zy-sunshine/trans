@@ -137,15 +137,16 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'trans.admin',
+    'trans.manage',
     'trans.comments',
     'trans.translations',
     'trans.books',
+    'trans.tests',
     'registration',
     'profiles',
     #'profile',
     # Uncomment the next line to enable the admin:
-    #'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -211,4 +212,10 @@ EMAIL_HOST_USER = 'magiclinuxgroup'
 EMAIL_HOST_PASSWORD = 'mayunxin'
 EMAIL_PORT = 587
 
-AUTH_PROFILE_MODULE = 'admin.User'
+AUTH_PROFILE_MODULE = 'manage.UserProfile'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'permission.backends.RoleBackend',
+    'permission.backends.PermissionBackend',
+)

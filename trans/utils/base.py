@@ -14,7 +14,7 @@ from django.core import urlresolvers
 #import configs
 #from utils.shortcuts import get_absolute_path
 
-from trans.admin.models import User
+from trans.manage.models import User
 #from functools import wraps
 
 from django.template import TemplateDoesNotExist
@@ -96,6 +96,10 @@ class TemplateView(object):
         self.request.str_cookies = request.COOKIES
         self.request.remote_addr = request.META['REMOTE_ADDR']
         self.request.get_all = lambda x: request.REQUEST.getlist(x)
+        try:
+            self.referer = self.request.META['HTTP_REFERER']
+        except:
+            self.referer = None
     def initialize(self, request):
         pass
         
@@ -128,39 +132,38 @@ class SiteRequestHandler(TemplateView):
         ### TODO
         #  self.login_user = auth.authenticate(username='john', password='secret')
         #  self.is_login = (self.login_user is not None)
-        self.is_login = False
+        #self.is_login = False
         ### TODO
         #   self.loginurl=reverse(login)#users.create_login_url(self.request.path)
         #   self.logouturl=reverse(logout)#users.create_logout_url(self.request.path)
         #self.is_admin = users.is_current_user_admin()
-        self.is_admin = False # TODO: make it valid
+        #self.is_admin = False # TODO: make it valid
         # three status: admin author login
-        if self.is_admin:
-            self.auth = 'admin'
-            self.author=User.all().filter('email =',self.login_user.email()).get()
-            if not self.author:
-                # init author database
-                self.author=User(dispname=self.login_user.nickname(),email=self.login_user.email())
-                self.author.isadmin=True
-                self.author.user=self.login_user
-                self.author.put()
-        elif self.is_login:
-            self.author=User.all().filter('email =',self.login_user.email()).get()
-            if self.author:
-                self.auth='author'
-            else:
-                self.auth = 'login'
-        else:
-            self.auth = 'guest'
+        #if self.is_admin:
+        #    self.auth = 'admin'
+        #    self.author=User.all().filter('email =',self.login_user.email()).get()
+        #    if not self.author:
+        #        # init author database
+        #        self.author=User(dispname=self.login_user.nickname(),email=self.login_user.email())
+        #        self.author.isadmin=True
+        #        self.author.user=self.login_user
+        #        self.author.put()
+        #elif self.is_login:
+        #    self.author=User.all().filter('email =',self.login_user.email()).get()
+        #    if self.author:
+        #        self.auth='author'
+        #    else:
+        #        self.auth = 'login'
+        #else:
+        #    self.auth = 'guest'
 
-        try:
-            self.referer = self.request.META['HTTP_REFERER']
-        except:
-            self.referer = None
+        
 
     ### TODO: check code position
-
-    def error(self,errorcode,message='an error occured'):
+    def error(self, message='an error occured', errorcode=None):
+        if not errorcode:
+            self.render('message.html', {'error': message})
+            return
         if errorcode == 404:
             message = 'Sorry, we were not able to find the requested page.  We have logged this error and will look into it.'
         elif errorcode == 403:
@@ -196,8 +199,13 @@ class SiteRequestHandler(TemplateView):
         return self.render(errorfile, {'errorcode':errorcode,'message':message})
 
     def message(self,msg,returl=None,title='Infomation'):
-        return self.render('msg',{'message':msg,'title':title,'returl':returl})
-
+        return self.render('message.html',{'message':{msg},'title':title,'returl':returl})
+    def warning(self, msg):
+        return self.render('message.html', {'warning': msg})
+    def info(self, msg):
+        return self.render('message.html', {'info': msg})
+    def success(self, msg):
+        return self.render('message.html', {'success': msg})
     def render(self, template_file, params={}, mimetype=None, status=None,
             content_type=None):
         tpl = loader.get_template(template_file)

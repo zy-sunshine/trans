@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 # Uncomment the next two lines to enable the admin:
-#from django.contrib import admin
-import trans.comments.urls, trans.translations.urls, trans.admin.urls
-#admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
+import trans.comments.urls, trans.translations.urls, trans.manage.urls
+
 
 urlpatterns = patterns('',
     # Examples:
@@ -20,17 +21,16 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    #url(r'^admin/', include(admin.site.urls)),
-    #url(r'^accounts/', include('registration.urls')),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
-    url(r'^accounts/profiles/', include('profiles.urls')),
+    url(r'^accounts/profile/', include('profiles.urls')),
     
-    url(r'^admin/', include(trans.admin.urls)),
+    url(r'^manage/', include(trans.manage.urls)),
     #url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     #url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
     # MEDIA dirs can store uploaded images, files.  TODO: open it when needed.
     (r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/\\'), 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
     (r'^%s/(?P<path>.*)$' % settings.IMAGES_URL.strip('/\\'), 'django.views.static.serve', {'document_root': settings.IMAGES_ROOT, 'show_indexes': True}),
     # STATIC dirs is used as prefix for js css, and set in django.conf.settings
-
+    (r'^tests/', include('trans.tests.urls')),
 )
