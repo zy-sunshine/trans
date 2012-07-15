@@ -8,4 +8,4 @@ play django.contrib.auth permission module.
 
 http://djangobook.py3k.cn/chapter07/translate/ is the translate page function view in djangobook site.
 
-
+TODO Add: add a Paragraph translated to handler with translated para, because orig paragraph should have an unique id.

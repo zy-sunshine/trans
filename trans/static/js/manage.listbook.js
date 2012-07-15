@@ -25,7 +25,7 @@ $('#id_showtoc').bind('click', function(){
   			success: function(data) {
   				console.log(data);
     			_.each(data, function(e){
-					table_str += '<tr><td>'+e.name+'</td><td>'+e.slug+'</td><td><a class="btn" href="/manage/edittoc/book/'+_slug+'/toc/'+e.slug+'/">Edit</a></td></tr>';
+					table_str += '<tr><td>'+e.name+'</td><td>'+e.slug+'</td><td><a class="btn" href="/manage/edittoc/book/'+_slug+'/toc/'+e.slug+'/">Edit</a><a class="btn" href="/manage/deltoc/book/'+_slug+'/toc/'+e.slug+'/">Delete</a></td></tr>';
 				});
   			}
 		});

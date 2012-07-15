@@ -101,9 +101,10 @@ class AddToc(SiteRequestHandler):
         i = 0
         for elem in results:
             isPara = elem.name == para_sep and True or False
+            elem.attrs = ''
             para = Paragraph(tocinfo_fk=tocinfo, 
                 lang_fk = lang_fk,
-                content = elem.text,
+                content = str(elem),
                 user = auth.get_user(self.request),
                 isPara = isPara,
                 tag = elem.name,
@@ -117,14 +118,27 @@ class AddToc(SiteRequestHandler):
         form = TocInfoForm()
         context = {'form': form, 'action': '/manage/addtoc/book/%s/' % book}
         self.render('trans/manage/addtoc.html', context)
+
 class EditToc(SiteRequestHandler):
     def GET(self, book='', toc=''):
         bookinfo = BookInfo.objects.get(slug=book)
         tocinfo = TocInfo.objects.get(bookinfo_fk=bookinfo, slug=toc)
         para = Paragraph.objects.filter(tocinfo_fk=tocinfo, lang_fk=bookinfo.lang_orig_fk)
         context = {'para': para}
-        log.info(len(para))
         self.render('trans/manage/edittoc.html', context)
+
+class DelToc(SiteRequestHandler):
+    def GET(self, book='', toc=''):
+        bookinfo = BookInfo.objects.get(slug=book)
+        tocinfo = TocInfo.objects.get(bookinfo_fk=bookinfo, slug=toc)
+        try:
+            Paragraph.objects.filter(tocinfo_fk=tocinfo, lang_fk=bookinfo.lang_orig_fk).delete()
+        except:
+            self.error('Can not delete toc: %s in book: %s' % (tocinfo.name, bookinfo.name))
+        else:
+            self.success('Success delete toc: %s in book: %s' % (tocinfo.name, bookinfo.name))
+        tocinfo.delete()
+
 
 # class AddUser(SiteRequestHandler):
 #     def POST(self):

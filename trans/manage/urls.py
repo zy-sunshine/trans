@@ -11,6 +11,7 @@ urlpatterns = patterns('trans.manage.views',
 	url(r'^listbooks/$', 'ListBooks', name='manage_listbooks'),
     url(r'^editbook/(?P<slug>[^/]*)/$', 'EditBook', name='manage_editbook'),
     url(r'^edittoc/book/(?P<book>[^/]*)/toc/(?P<toc>[^/]*)/$', 'EditToc', name='manage_edittoc'),
+    url(r'^deltoc/book/(?P<book>[^/]*)/toc/(?P<toc>[^/]*)/$', 'DelToc', name='manage_deltoc'),
 )
 urlpatterns += patterns('trans.manage.ajax',
 	url(r'^check/book_slug_unique/$', 'BookSlugUnique'),
