@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 {% block title %} Edit Toc {% endblock %}
 {% block content %}
-<div class="container-fluid">
-	<!--
 <style>
-ul.nostyle {list-style-type: none;}
-</style>
-<ul id="sortable" class='nostyle'>
+	.column { width: 100%; float: left; padding-bottom: 100px; font-size: 62.5%; }
+	.portlet {margin: 0 1em 1em 0; position:relative;}
+	.para-content { padding: 0.4em; cursor: default; width: 80%; margin-left: 35px;}
+	.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+	.ui-sortable-placeholder * { visibility: hidden; }
+	.para-opt { position:absolute; right: 0px; width: 14%; visibility: hidden;}
+	.para-opt .dropdown-menu {font-size:150%;}
+	.para-info {position: absolute; left: 0px; cursor: default;}
+	</style>
+
+<div class="container-fluid">
+<!--
+<ul id="sortable" class="unstyled">
 	<li class="ui-state-default">Item 1</li>
 	<li class="ui-state-default">Item 2</li>
 	<li class="ui-state-default">Item 3</li>
@@ -16,14 +24,32 @@ ul.nostyle {list-style-type: none;}
 	<li class="ui-state-default">Item 7</li>
 </ul>
 -->
+<div style="position: fixed; bottom: 20px; right: 20px; cursor: pointer; " title="submit changes">
+	<button class="btn btn-primary"/>submit</button>
+</div>
 <div class="column">
 {% for p in para %}
+<!-- <div>Tag: {{ p.tag }} Hero: {{ p.user }} Modify: {{ p.datetime }} </div> -->
 	<div class="portlet">
-		<div class="portlet-header">Tag: {{ p.tag }} Hero: {{ p.user }} Modify: {{ p.datetime }}</div>
-		<div class="portlet-content">{{ p.content }}</div>
+		<div class="para-info ">
+			<span class="label">tag</span>
+		</div>
+		<div class="para-opt">
+			<div class="btn-group">
+		      <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">{{ p.id }} P<span class="caret"></span></button>
+		      <ul class="dropdown-menu">
+		        <li><a href="#">Action</a></li>
+		        <li><a href="#">Another action</a></li>
+		        <li><a href="#">Something else here</a></li>
+		        <li class="divider"></li>
+		        <li><a href="#">Separated link</a></li>
+		      </ul>
+		    </div>
+		</div>
+		<div class="para-content">{{ p.content }}</div>
+		
 	</div>
 {% endfor %}
-
 </div>
 
 </div>
