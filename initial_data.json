@@ -45,7 +45,7 @@
     }
   },
   {
-    "pk": 14,
+    "pk": 15,
     "model": "contenttypes.contenttype",
     "fields": {
       "model": "logentry",
@@ -57,8 +57,17 @@
     "pk": 12,
     "model": "contenttypes.contenttype",
     "fields": {
-      "model": "paragraph",
-      "name": "paragraph",
+      "model": "paragraph_orig",
+      "name": "paragraph_ orig",
+      "app_label": "books"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "paragraph_trans",
+      "name": "paragraph_ trans",
       "app_label": "books"
     }
   },
@@ -72,7 +81,7 @@
     }
   },
   {
-    "pk": 13,
+    "pk": 14,
     "model": "contenttypes.contenttype",
     "fields": {
       "model": "registrationprofile",
@@ -126,11 +135,11 @@
     }
   },
   {
-    "pk": "0de0aa7eb202eff94de4eb1cb28e5ab9",
+    "pk": "f182f6e6b8ec0163d0a10f6dc7a05e08",
     "model": "sessions.session",
     "fields": {
-      "expire_date": "2012-07-29T07:09:24Z",
-      "session_data": "YzRhNjY2Mzg4OTVlZjY3MDk5YmY0OTIzMmU2YzkxMDg5NDYxZjk2MDqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQSKAQJ1Lg==\n"
+      "expire_date": "2012-07-30T13:49:48Z",
+      "session_data": "NGRhNjQ0Nzc2NDk3YWQ3MzY5NGE3NDFlOGM4MDNjNTllODQ4ODgwZjqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQSKAQF1Lg==\n"
     }
   },
   {
@@ -156,30 +165,39 @@
     }
   },
   {
-    "pk": 40,
+    "pk": 2,
+    "model": "books.tocinfo",
+    "fields": {
+      "bookinfo_fk": 1,
+      "name": "chapter1",
+      "slug": "chapter1"
+    }
+  },
+  {
+    "pk": 43,
     "model": "auth.permission",
     "fields": {
       "codename": "add_logentry",
       "name": "Can add log entry",
-      "content_type": 14
+      "content_type": 15
     }
   },
   {
-    "pk": 41,
+    "pk": 44,
     "model": "auth.permission",
     "fields": {
       "codename": "change_logentry",
       "name": "Can change log entry",
-      "content_type": 14
+      "content_type": 15
     }
   },
   {
-    "pk": 42,
+    "pk": 45,
     "model": "auth.permission",
     "fields": {
       "codename": "delete_logentry",
       "name": "Can delete log entry",
-      "content_type": 14
+      "content_type": 15
     }
   },
   {
@@ -321,8 +339,8 @@
     "pk": 34,
     "model": "auth.permission",
     "fields": {
-      "codename": "add_paragraph",
-      "name": "Can add paragraph",
+      "codename": "add_paragraph_orig",
+      "name": "Can add paragraph_ orig",
       "content_type": 12
     }
   },
@@ -330,8 +348,8 @@
     "pk": 35,
     "model": "auth.permission",
     "fields": {
-      "codename": "change_paragraph",
-      "name": "Can change paragraph",
+      "codename": "change_paragraph_orig",
+      "name": "Can change paragraph_ orig",
       "content_type": 12
     }
   },
@@ -339,9 +357,36 @@
     "pk": 36,
     "model": "auth.permission",
     "fields": {
-      "codename": "delete_paragraph",
-      "name": "Can delete paragraph",
+      "codename": "delete_paragraph_orig",
+      "name": "Can delete paragraph_ orig",
       "content_type": 12
+    }
+  },
+  {
+    "pk": 37,
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_paragraph_trans",
+      "name": "Can add paragraph_ trans",
+      "content_type": 13
+    }
+  },
+  {
+    "pk": 38,
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_paragraph_trans",
+      "name": "Can change paragraph_ trans",
+      "content_type": 13
+    }
+  },
+  {
+    "pk": 39,
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_paragraph_trans",
+      "name": "Can delete paragraph_ trans",
+      "content_type": 13
     }
   },
   {
@@ -453,30 +498,30 @@
     }
   },
   {
-    "pk": 37,
+    "pk": 40,
     "model": "auth.permission",
     "fields": {
       "codename": "add_registrationprofile",
       "name": "Can add registration profile",
-      "content_type": 13
+      "content_type": 14
     }
   },
   {
-    "pk": 38,
+    "pk": 41,
     "model": "auth.permission",
     "fields": {
       "codename": "change_registrationprofile",
       "name": "Can change registration profile",
-      "content_type": 13
+      "content_type": 14
     }
   },
   {
-    "pk": 39,
+    "pk": 42,
     "model": "auth.permission",
     "fields": {
       "codename": "delete_registrationprofile",
       "name": "Can delete registration profile",
-      "content_type": 13
+      "content_type": 14
     }
   },
   {
@@ -543,30 +588,12 @@
       "is_active": true,
       "is_superuser": true,
       "is_staff": true,
-      "last_login": "2012-07-15T07:04:49Z",
+      "last_login": "2012-07-16T13:49:48Z",
       "groups": [],
       "user_permissions": [],
-      "password": "pbkdf2_sha256$10000$nT0YeYiyzY6N$cKtKn7u0xGVXSFfXnsbRTcZ3/anWIJqcvbYZISIaIh0=",
+      "password": "pbkdf2_sha256$10000$UiMKec2EnkvZ$HaAySrIs2kxX0KcmdN5eLS76qKld2yAoI/zSBFhXns0=",
       "email": "zy.netsec@gmail.com",
-      "date_joined": "2012-07-15T07:04:49Z"
-    }
-  },
-  {
-    "pk": 2,
-    "model": "auth.user",
-    "fields": {
-      "username": "test1",
-      "first_name": "",
-      "last_name": "",
-      "is_active": true,
-      "is_superuser": false,
-      "is_staff": false,
-      "last_login": "2012-07-15T07:09:24Z",
-      "groups": [],
-      "user_permissions": [],
-      "password": "pbkdf2_sha256$10000$vWhRpPhmz3Kq$iROSC3s4aihzlctfkxMsHf5syNAxGIHRbQQL7lopGDg=",
-      "email": "zy.netsec@gmail.com",
-      "date_joined": "2012-07-15T07:08:58Z"
+      "date_joined": "2012-07-16T13:43:53Z"
     }
   },
   {
@@ -574,20 +601,1017 @@
     "model": "books.bookinfo",
     "fields": {
       "lang_orig_fk": 2,
-      "description": "description of djangobook\r\nauthor unknown",
-      "datetime": "2012-07-15",
+      "description": "djangobook description",
+      "datetime": "2012-07-16T13:50:01Z",
       "link_orig": "http://djangobook.com/",
-      "user": 2,
+      "user": 1,
       "slug": "djangobook",
       "name": "djangobook"
     }
   },
   {
     "pk": 1,
-    "model": "registration.registrationprofile",
+    "model": "books.paragraph_orig",
     "fields": {
-      "activation_key": "ALREADY_ACTIVATED",
-      "user": 2
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<h1><a>The Django Book</a></h1>",
+      "lang_fk": 2,
+      "tag": "h1",
+      "user": 1,
+      "message": "",
+      "order": 0
+    }
+  },
+  {
+    "pk": 2,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<h2>Chapter 1: Introduction to Django</h2>",
+      "lang_fk": 2,
+      "tag": "h2",
+      "user": 1,
+      "message": "",
+      "order": 1
+    }
+  },
+  {
+    "pk": 3,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>This book is about Django, a Web development framework that saves you time\r\nand makes Web development a joy. Using Django, you can build and maintain\r\nhigh-quality Web applications with minimal fuss.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 2
+    }
+  },
+  {
+    "pk": 4,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>At its best, Web development is an exciting, creative act; at its worst,\r\nit can be a repetitive, frustrating nuisance. Django lets you focus on the fun\r\nstuff &#8212; the crux of your Web application &#8212; while easing the pain of the\r\nrepetitive bits. In doing so, it provides high-level abstractions of common\r\nWeb development patterns, shortcuts for frequent programming tasks, and\r\nclear conventions for how to solve problems. At the same time, Django tries to\r\nstay out of your way, letting you work outside the scope of the framework as\r\nneeded.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 3
+    }
+  },
+  {
+    "pk": 5,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>The goal of this book is to make you a Django expert. The focus is twofold.\r\nFirst, we explain, in depth, what Django does and how to build Web\r\napplications with it. Second, we discuss higher-level concepts where\r\nappropriate, answering the question &#8220;How can I apply these tools effectively\r\nin my own projects?&#8221; By reading this book, you&#8217;ll learn the skills needed to\r\ndevelop powerful Web sites quickly, with code that is clean and easy to\r\nmaintain.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 4
+    }
+  },
+  {
+    "pk": 6,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<h3>What Is a Web Framework?</h3>",
+      "lang_fk": 2,
+      "tag": "h3",
+      "user": 1,
+      "message": "",
+      "order": 5
+    }
+  },
+  {
+    "pk": 7,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>Django is a prominent member of a new generation of <em>Web frameworks</em> &#8212; but\r\nwhat does that term mean, precisely?</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 6
+    }
+  },
+  {
+    "pk": 8,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>To answer that question, let&#8217;s consider the design of a Web application written\r\nin Python <em>without</em> a framework. Throughout this book, we&#8217;ll take this approach\r\nof showing you basic ways of getting work done <em>without</em> shortcuts, in the hope\r\nthat you&#8217;ll recognize why shortcuts are so helpful. (It&#8217;s also valuable to know\r\nhow to get things done without shortcuts because shortcuts aren&#8217;t always\r\navailable. And most importantly, knowing <em>why</em> things work the way they do\r\nmakes you a better Web developer.)</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 7
+    }
+  },
+  {
+    "pk": 9,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>One of the simplest, most direct ways to build a Python Web app from scratch is\r\nto use the Common Gateway Interface (CGI) standard, which was a popular\r\ntechnique circa 1998. Here&#8217;s a high-level explanation of how it works: just\r\ncreate a Python script that outputs HTML, then save the script to a Web server\r\nwith a &#8220;.cgi&#8221; extension and visit the page in your Web browser. That&#8217;s it.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 8
+    }
+  },
+  {
+    "pk": 10,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>Here&#8217;s an example Python CGI script that displays the ten most recently\r\npublished books from a database. Don&#8217;t worry about syntax details; just get a\r\nfeel for the basic things it&#8217;s doing:</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 9
+    }
+  },
+  {
+    "pk": 11,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<pre>\r\n#!/usr/bin/env python\r\n\r\nimport MySQLdb\r\n\r\nprint &quot;Content-Type: text/html\\n&quot;\r\nprint &quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Books&lt;/title&gt;&lt;/head&gt;&quot;\r\nprint &quot;&lt;body&gt;&quot;\r\nprint &quot;&lt;h1&gt;Books&lt;/h1&gt;&quot;\r\nprint &quot;&lt;ul&gt;&quot;\r\n\r\nconnection = MySQLdb.connect(user='me', passwd='letmein', db='my_db')\r\ncursor = connection.cursor()\r\ncursor.execute(&quot;SELECT name FROM books ORDER BY pub_date DESC LIMIT 10&quot;)\r\n\r\nfor row in cursor.fetchall():\r\n    print &quot;&lt;li&gt;%s&lt;/li&gt;&quot; % row[0]\r\n\r\nprint &quot;&lt;/ul&gt;&quot;\r\nprint &quot;&lt;/body&gt;&lt;/html&gt;&quot;\r\n\r\nconnection.close()\r\n</pre>",
+      "lang_fk": 2,
+      "tag": "pre",
+      "user": 1,
+      "message": "",
+      "order": 10
+    }
+  },
+  {
+    "pk": 12,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>First, to fulfill the requirements of CGI, this code prints a &#8220;Content-Type&#8221;\r\nline, followed by a blank line. It prints some introductory HTML, connects to a\r\ndatabase and runs a query to retrieve the names of the latest ten books.\r\nLooping over those books, it generates an HTML list of the titles. Finally, it\r\nprints the closing HTML and closes the database connection.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 11
+    }
+  },
+  {
+    "pk": 13,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>With a one-off page like this one, the write-it-from-scratch approach isn&#8217;t\r\nnecessarily bad. For one thing, this code is simple to comprehend &#8212; even a\r\nnovice developer can read these 16 lines of Python and understand everything it\r\ndoes, from start to finish. There&#8217;s nothing else to learn, no other code to\r\nread. It&#8217;s also simple to deploy: just save this code in a file that ends with\r\n&#8220;.cgi&#8221;, upload that file to a Web server, and visit that page with a browser.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 12
+    }
+  },
+  {
+    "pk": 14,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<p>But despite its simplicity, this approach has a number of problems and\r\nannoyances. Ask yourself these questions:</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 13
+    }
+  },
+  {
+    "pk": 15,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:02Z",
+      "content": "<ul>\n<li>What happens when multiple parts of your application need to connect to\r\nthe database? Surely that database-connecting code shouldn&#8217;t need to be\r\nduplicated in each individual CGI script. The pragmatic thing to do would\r\nbe to refactor it into a shared function.</li>\n<li>Should a developer really have to worry about printing the\r\n&#8220;Content-Type&#8221; line and remembering to close the database connection?\r\nThis sort of boilerplate reduces programmer productivity and introduces\r\nopportunities for mistakes. These setup- and teardown-related tasks would\r\nbest be handled by some common infrastructure.</li>\n<li>What happens when this code is reused in multiple environments, each with\r\na separate database and password? At this point, some\r\nenvironment-specific configuration becomes essential.</li>\n<li>What happens when a Web designer who has no experience coding Python\r\nwishes to redesign the page? One wrong character could crash the entire\r\napplication. Ideally, the logic of the page &#8212; the retrieval of book\r\ntitles from the database &#8212; would be separate from the HTML display of\r\nthe page, so that a designer could edit the latter without affecting the\r\nformer.</li>\n</ul>",
+      "lang_fk": 2,
+      "tag": "ul",
+      "user": 1,
+      "message": "",
+      "order": 14
+    }
+  },
+  {
+    "pk": 16,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>These problems are precisely what a Web framework intends to solve. A Web\r\nframework provides a programming infrastructure for your applications, so that\r\nyou can focus on writing clean, maintainable code without having to reinvent\r\nthe wheel. In a nutshell, that&#8217;s what Django does.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 15
+    }
+  },
+  {
+    "pk": 17,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<h3>The MVC Design Pattern</h3>",
+      "lang_fk": 2,
+      "tag": "h3",
+      "user": 1,
+      "message": "",
+      "order": 16
+    }
+  },
+  {
+    "pk": 18,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>Let&#8217;s dive in with a quick example that demonstrates the difference between the\r\nprevious approach and a Web framework&#8217;s approach. Here&#8217;s how you might write\r\nthe previous CGI code using Django. The first thing to note is that that we\r\nsplit it over four Python files (<tt><span>models.py</span></tt>, <tt><span>views.py</span></tt>, <tt><span>urls.py</span></tt>) and\r\nan HTML template (<tt><span>latest_books.html</span></tt>):</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 17
+    }
+  },
+  {
+    "pk": 19,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<pre>\r\n# models.py (the database tables)\r\n\r\nfrom django.db import models\r\n\r\nclass Book(models.Model):\r\n    name = models.CharField(max_length=50)\r\n    pub_date = models.DateField()\r\n\r\n\r\n# views.py (the business logic)\r\n\r\nfrom django.shortcuts import render_to_response\r\nfrom models import Book\r\n\r\ndef latest_books(request):\r\n    book_list = Book.objects.order_by('-pub_date')[:10]\r\n    return render_to_response('latest_books.html', {'book_list': book_list})\r\n\r\n\r\n# urls.py (the URL configuration)\r\n\r\nfrom django.conf.urls.defaults import *\r\nimport views\r\n\r\nurlpatterns = patterns('',\r\n    (r'^latest/$', views.latest_books),\r\n)\r\n\r\n\r\n# latest_books.html (the template)\r\n\r\n&lt;html&gt;&lt;head&gt;&lt;title&gt;Books&lt;/title&gt;&lt;/head&gt;\r\n&lt;body&gt;\r\n&lt;h1&gt;Books&lt;/h1&gt;\r\n&lt;ul&gt;\r\n{% for book in book_list %}\r\n&lt;li&gt;{{ book.name }}&lt;/li&gt;\r\n{% endfor %}\r\n&lt;/ul&gt;\r\n&lt;/body&gt;&lt;/html&gt;\r\n</pre>",
+      "lang_fk": 2,
+      "tag": "pre",
+      "user": 1,
+      "message": "",
+      "order": 18
+    }
+  },
+  {
+    "pk": 20,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>Again, don&#8217;t worry about the particulars of syntax; just get a feel for the\r\noverall design. The main thing to note here is the <em>separation of concerns</em>:</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 19
+    }
+  },
+  {
+    "pk": 21,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<ul>\n<li>The <tt><span>models.py</span></tt> file contains a description of the database table,\r\nrepresented by a Python class. This class is called a <em>model</em>. Using it,\r\nyou can create, retrieve, update and delete records in your database\r\nusing simple Python code rather than writing repetitive SQL statements.</li>\n<li>The <tt><span>views.py</span></tt> file contains the business logic for the page. The\r\n<tt><span>latest_books()</span></tt> function is called a <em>view</em>.</li>\n<li>The <tt><span>urls.py</span></tt> file specifies which view is called for a given URL\r\npattern. In this case, the URL <tt><span>/latest/</span></tt> will be handled by the\r\n<tt><span>latest_books()</span></tt> function. In other words, if your domain is\r\nexample.com, any visit to the URL <a>http://example.com/latest/</a> will call\r\nthe <tt><span>latest_books()</span></tt> function.</li>\n<li>The <tt><span>latest_books.html</span></tt> file is an HTML template that describes the\r\ndesign of the page. It uses a template language with basic logic\r\nstatements &#8212; e.g., <tt><span>{%</span> <span>for</span> <span>book</span> <span>in</span> <span>book_list</span> <span>%}</span></tt>.</li>\n</ul>",
+      "lang_fk": 2,
+      "tag": "ul",
+      "user": 1,
+      "message": "",
+      "order": 20
+    }
+  },
+  {
+    "pk": 22,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>Taken together, these pieces loosely follow a pattern called\r\nModel-View-Controller (MVC). Simply put, MVC is way of developing software so\r\nthat the code for defining and accessing data (the model) is separate from\r\nrequest-routing logic (the controller), which in turn is separate from the user\r\ninterface (the view). (We&#8217;ll discuss MVC in more depth in Chapter 5.)</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 21
+    }
+  },
+  {
+    "pk": 23,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>A key advantage of such an approach is that components are <em>loosely coupled</em>.\r\nEach distinct piece of a Django-powered Web application has a single key\r\npurpose and can be changed independently without affecting the other pieces.\r\nFor example, a developer can change the URL for a given part of the application\r\nwithout affecting the underlying implementation. A designer can change a page&#8217;s\r\nHTML without having to touch the Python code that renders it. A database\r\nadministrator can rename a database table and specify the change in a single\r\nplace, rather than having to search and replace through a dozen files.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 22
+    }
+  },
+  {
+    "pk": 24,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>In this book, each component of MVC gets its own chapter. Chapter 3 covers\r\nviews, Chapter 4 covers templates, and Chapter 5 covers models.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 23
+    }
+  },
+  {
+    "pk": 25,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<h3>Django&#8217;s History</h3>",
+      "lang_fk": 2,
+      "tag": "h3",
+      "user": 1,
+      "message": "",
+      "order": 24
+    }
+  },
+  {
+    "pk": 26,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>Before we dive into more code, we should take a moment to explain Django&#8217;s\r\nhistory. We noted above that we&#8217;ll be showing you how to do things <em>without</em>\r\nshortcuts so that you more fully understand the shortcuts. Similarly, it&#8217;s\r\nuseful to understand <em>why</em> Django was created, because knowledge of the history\r\nwill put into context why Django works the way it does.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 25
+    }
+  },
+  {
+    "pk": 27,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>If you&#8217;ve been building Web applications for a while, you&#8217;re probably familiar\r\nwith the problems in the CGI example we presented earlier. The classic Web\r\ndeveloper&#8217;s path goes something like this:</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 26
+    }
+  },
+  {
+    "pk": 28,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<ol>\n<li>Write a Web application from scratch.</li>\n<li>Write another Web application from scratch.</li>\n<li>Realize the application from step 1 shares much in common with the\r\napplication from step 2.</li>\n<li>Refactor the code so that application 1 shares code with application 2.</li>\n<li>Repeat steps 2-4 several times.</li>\n<li>Realize you&#8217;ve invented a framework.</li>\n</ol>",
+      "lang_fk": 2,
+      "tag": "ol",
+      "user": 1,
+      "message": "",
+      "order": 27
+    }
+  },
+  {
+    "pk": 29,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>This is precisely how Django itself was created!</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 28
+    }
+  },
+  {
+    "pk": 30,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>Django grew organically from real-world applications written by a Web\r\ndevelopment team in Lawrence, Kansas, USA. It was born in the fall of 2003,\r\nwhen the Web programmers at the <em>Lawrence Journal-World</em> newspaper, Adrian\r\nHolovaty and Simon Willison, began using Python to build applications.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 29
+    }
+  },
+  {
+    "pk": 31,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>The World Online team, responsible for the production and maintenance of\r\nseveral local news sites, thrived in a development environment dictated by\r\njournalism deadlines. For the sites &#8212; including LJWorld.com, Lawrence.com and\r\nKUsports.com &#8212; journalists (and management) demanded that features be added\r\nand entire applications be built on an intensely fast schedule, often with only\r\ndays&#8217; or hours&#8217; notice. Thus, Simon and Adrian developed a time-saving Web\r\ndevelopment framework out of necessity &#8212; it was the only way they could build\r\nmaintainable applications under the extreme deadlines.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 30
+    }
+  },
+  {
+    "pk": 32,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>In summer 2005, after having developed this framework to a point where it was\r\nefficiently powering most of World Online&#8217;s sites, the team, which now included\r\nJacob Kaplan-Moss, decided to release the framework as open source software.\r\nThey released it in July 2005 and named it Django, after the jazz guitarist\r\nDjango Reinhardt.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 31
+    }
+  },
+  {
+    "pk": 33,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>Now, several years later, Django is a well-established open source project with\r\ntens of thousands of users and contributors spread across the planet. Two of\r\nthe original World Online developers (the &#8220;Benevolent Dictators for Life,&#8221;\r\nAdrian and Jacob) still provide central guidance for the framework&#8217;s growth,\r\nbut it&#8217;s much more of a collaborative team effort.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 32
+    }
+  },
+  {
+    "pk": 34,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>This history is relevant because it helps explain two key things. The first is\r\nDjango&#8217;s &#8220;sweet spot.&#8221; Because Django was born in a news environment, it offers\r\nseveral features (such as its admin site, covered in Chapter 6) that are\r\nparticularly well suited for &#8220;content&#8221; sites &#8212; sites like Amazon.com,\r\ncraigslist.org, and washingtonpost.com that offer dynamic, database-driven\r\ninformation. Don&#8217;t let that turn you off, though &#8212; although Django is\r\nparticularly good for developing those sorts of sites, that doesn&#8217;t preclude it\r\nfrom being an effective tool for building any sort of dynamic Web site.\r\n(There&#8217;s a difference between being <em>particularly effective</em> at something and\r\nbeing <em>ineffective</em> at other things.)</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 33
+    }
+  },
+  {
+    "pk": 35,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>The second matter to note is how Django&#8217;s origins have shaped the culture of\r\nits open source community. Because Django was extracted from real-world code,\r\nrather than being an academic exercise or commercial product, it is acutely\r\nfocused on solving Web development problems that Django&#8217;s developers themselves\r\nhave faced &#8212; and continue to face. As a result, Django itself is actively\r\nimproved on an almost daily basis. The framework&#8217;s maintainers have a vested\r\ninterest in making sure Django saves developers time, produces applications\r\nthat are easy to maintain and performs well under load. If nothing else, the\r\ndevelopers are motivated by their own selfish desires to save themselves time\r\nand enjoy their jobs. (To put it bluntly, they eat their own dog food.)</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 34
+    }
+  },
+  {
+    "pk": 36,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<h3>How to Read This Book</h3>",
+      "lang_fk": 2,
+      "tag": "h3",
+      "user": 1,
+      "message": "",
+      "order": 35
+    }
+  },
+  {
+    "pk": 37,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:03Z",
+      "content": "<p>In writing this book, we tried to strike a balance between readability and\r\nreference, with a bias toward readability. Our goal with this book, as stated\r\nearlier, is to make you a Django expert, and we believe the best way to teach is\r\nthrough prose and plenty of examples, rather than providing an exhaustive\r\nbut bland catalog of Django features. (As the saying goes, you can&#8217;t expect to\r\nteach somebody how to speak a language merely by teaching them the alphabet.)</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 36
+    }
+  },
+  {
+    "pk": 38,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>With that in mind, we recommend that you read Chapters 1 through 12 in order.\r\nThey form the foundation of how to use Django; once you&#8217;ve read them, you&#8217;ll be\r\nable to build and deploy Django-powered Web sites. Specifically, Chapters 1\r\nthrough 7 are the &#8220;core curriculum,&#8221; Chapters 8 through 11 cover more advanced\r\nDjango usage, and Chapter 12 covers deployment. The remaining chapters, 13\r\nthrough 20, focus on specific Django features and can be read in any order.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 37
+    }
+  },
+  {
+    "pk": 39,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>The appendixes are for reference. They, along with the free documentation at\r\n<a>http://www.djangoproject.com/</a>, are probably what you&#8217;ll flip back to occasionally to\r\nrecall syntax or find quick synopses of what certain parts of Django do.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 38
+    }
+  },
+  {
+    "pk": 40,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>Readers of this book should understand the basics of procedural and\r\nobject-oriented programming: control structures (e.g., <tt><span>if</span></tt>, <tt><span>while</span></tt>,\r\n<tt><span>for</span></tt>), data structures (lists, hashes/dictionaries), variables, classes and\r\nobjects.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 39
+    }
+  },
+  {
+    "pk": 41,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>Experience in Web development is, as you may expect, very helpful, but it&#8217;s\r\nnot required to understand this book. Throughout the book, we try to promote\r\nbest practices in Web development for readers who lack this experience.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 40
+    }
+  },
+  {
+    "pk": 42,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>At its core, Django is simply a collection of libraries written in the Python\r\nprogramming language. To develop a site using Django, you write Python code\r\nthat uses these libraries. Learning Django, then, is a matter of learning how\r\nto program in Python and understanding how the Django libraries work.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 41
+    }
+  },
+  {
+    "pk": 43,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>If you have experience programming in Python, you should have no trouble diving\r\nin. By and large, the Django code doesn&#8217;t perform a lot of &#8220;magic&#8221; (i.e.,\r\nprogramming trickery whose implementation is difficult to explain or\r\nunderstand). For you, learning Django will be a matter of learning Django&#8217;s\r\nconventions and APIs.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 42
+    }
+  },
+  {
+    "pk": 44,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>If you don&#8217;t have experience programming in Python, you&#8217;re in for a treat.\r\nIt&#8217;s easy to learn and a joy to use! Although this book doesn&#8217;t include a full\r\nPython tutorial, it highlights Python features and functionality where\r\nappropriate, particularly when code doesn&#8217;t immediately make sense. Still, we\r\nrecommend you read the official Python tutorial, available online at\r\n<a>http://docs.python.org/tut/</a>. We also recommend Mark Pilgrim&#8217;s free book\r\n<em>Dive Into Python</em>, available at <a>http://www.diveintopython.org/</a> and published in\r\nprint by Apress.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 43
+    }
+  },
+  {
+    "pk": 45,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>This book covers Django 1.1.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 44
+    }
+  },
+  {
+    "pk": 46,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>Django&#8217;s developers maintain backwards compatibility within &#8220;major version&#8221;\r\nnumbers. This commitment means that, if you write an application for Django\r\n1.1, it will still work for 1.2, 1.3, 1.9 and any other version number that\r\nstarts with &#8220;1.&#8221;</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 45
+    }
+  },
+  {
+    "pk": 47,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>Once Django hits 2.0, though, your applications might need to be rewritten &#8212;\r\nbut version 2.0 is a long way away. As a point of reference, it took more than\r\nthree years to release version 1.0. (This is very similar to the compatibility\r\npolicy taken by the Python language itself: code that was written for Python\r\n2.0 works on Python 2.6, but not necessarily with Python 3.0.)</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 46
+    }
+  },
+  {
+    "pk": 48,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>Given that this book covers 1.1, it should serve you well for some time.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 47
+    }
+  },
+  {
+    "pk": 49,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>One of the greatest benefits of Django is its kind and helpful user community.\r\nFor help with any aspect of Django &#8212; from installation, to application design,\r\nto database design, to deployment &#8212; feel free to ask questions online.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 48
+    }
+  },
+  {
+    "pk": 50,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<ul>\n<li>The django-users mailing list is where thousands of Django users hang out\r\nto ask and answer questions. Sign up for free at <a>http://www.djangoproject.com/r/django-users</a>.</li>\n<li>The Django IRC channel is where Django users hang out to chat and help\r\neach other in real time. Join the fun by logging on to #django on the\r\nFreenode IRC network.</li>\n</ul>",
+      "lang_fk": 2,
+      "tag": "ul",
+      "user": 1,
+      "message": "",
+      "order": 49
+    }
+  },
+  {
+    "pk": 51,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>In the <a>next chapter</a>, we&#8217;ll get started with Django, covering installation and\r\ninitial setup.</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 50
+    }
+  },
+  {
+    "pk": 52,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>\n<input />\n<label>Name (required)</label>\n<input />\n</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 51
+    }
+  },
+  {
+    "pk": 53,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>\n<label>E-mail (required; will not be displayed)</label>\n<input />\n</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 52
+    }
+  },
+  {
+    "pk": 54,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>\n<label>Website</label>\n<input />\n</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 53
+    }
+  },
+  {
+    "pk": 55,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>\n<label>Comment</label>\n<textarea></textarea>\n</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 54
+    }
+  },
+  {
+    "pk": 56,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<ol></ol>",
+      "lang_fk": 2,
+      "tag": "ol",
+      "user": 1,
+      "message": "",
+      "order": 55
+    }
+  },
+  {
+    "pk": 57,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": false,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<ol></ol>",
+      "lang_fk": 2,
+      "tag": "ol",
+      "user": 1,
+      "message": "",
+      "order": 56
+    }
+  },
+  {
+    "pk": 58,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>\r\n            This site is using a contextual comment system to help us gather\r\n            targeted feedback about the book.  Instead of commenting on an\r\n            entire chapter, you can leave comments on any indivdual \"block\"\r\n            in the chapter. A \"block\" with comments looks like this:\r\n          </p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 57
+    }
+  },
+  {
+    "pk": 59,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:04Z",
+      "content": "<p>\n<img />\n</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 58
+    }
+  },
+  {
+    "pk": 60,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:05Z",
+      "content": "<p>\r\n            A \"block\" is a paragraph, list item, code sample, or other small\r\n            chunk of content.  It'll get highlighted when you select it:\r\n          </p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 59
+    }
+  },
+  {
+    "pk": 61,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:05Z",
+      "content": "<p>\n<img />\n</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 60
+    }
+  },
+  {
+    "pk": 62,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:05Z",
+      "content": "<p>\r\n            To post a comment on a block, just click in the gutter next to the\r\n            bit you want to comment on:\r\n          </p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 61
+    }
+  },
+  {
+    "pk": 63,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:05Z",
+      "content": "<p>\n<img />\n</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 62
+    }
+  },
+  {
+    "pk": 64,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:05Z",
+      "content": "<p>\r\n            As we edit the book, we'll review everyone's comments and roll them into\r\n            a future version of the book. We'll mark reviewed comments with a little\r\n            checkmark:\r\n          </p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 63
+    }
+  },
+  {
+    "pk": 65,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:05Z",
+      "content": "<p>\r\n            Please make sure to leave a full name (and not a nickname or\r\n            screenname) if you'd like your contributions acknowledged in print.\r\n          </p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 64
+    }
+  },
+  {
+    "pk": 66,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:05Z",
+      "content": "<p>\n<img />\n</p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 65
+    }
+  },
+  {
+    "pk": 67,
+    "model": "books.paragraph_orig",
+    "fields": {
+      "isPara": true,
+      "tocinfo_fk": 2,
+      "datetime": "2012-07-16T13:52:05Z",
+      "content": "<p>\r\n            Many, many thanks to <a>Jack Slocum</a>;\r\n            the inspiration and much of the code for the comment system comes from Jack's\r\n            blog, and this site couldn't have been built without his wonderful \r\n            <code>YAHOO.ext</code> library.  Thanks also to Yahoo for YUI itself.\r\n          </p>",
+      "lang_fk": 2,
+      "tag": "p",
+      "user": 1,
+      "message": "",
+      "order": 66
     }
   }
 ]

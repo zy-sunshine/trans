@@ -214,8 +214,8 @@ EMAIL_PORT = 587
 
 AUTH_PROFILE_MODULE = 'manage.UserProfile'
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'permission.backends.RoleBackend',
-    'permission.backends.PermissionBackend',
-)
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend',
+#     'permission.backends.RoleBackend',
+#     'permission.backends.PermissionBackend',
+# )

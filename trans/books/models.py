@@ -33,6 +33,14 @@ class Paragraph(models.Model):
 	message = CharField(max_length=100, verbose_name=_('Commit Message'))
 	order = IntegerField()
 	datetime = DateTimeField(auto_now=True)
+	class Meta:
+		abstract = True
+
+class Paragraph_Orig(Paragraph):
+	pass
+
+class Paragraph_Trans(Paragraph):
+	para_orig_fk = ForeignKey(Paragraph_Orig, related_name='trans')
 
 # class Comments(models.Model):
 # 	tocinfo_fk = ForeignKey('TocInfo')

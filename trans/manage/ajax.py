@@ -1,5 +1,5 @@
 from trans.utils.base import SiteRequestHandler
-from trans.books.models import BookInfo, TocInfo
+from trans.books.models import BookInfo, TocInfo, Paragraph_Trans, Paragraph_Orig
 from django.core.exceptions import ObjectDoesNotExist
 import logging
 Log = logging.getLogger('django')
@@ -33,3 +33,11 @@ class GetToclist(SiteRequestHandler):
 			ajax_str = '[]'
 		self.write(ajax_str)
 
+class DelParagraph(SiteRequestHandler):
+	def GET(self, para_id=None):
+		if para_id is not None:
+			para_orig = Paragraph_Orig.objects.get(id=para_id)
+			para_trans = Paragraph_Trans.objects.filter(para_orig_fk=para_orig)
+			if para_trans:
+				para_trans.delete()
+			para_orig.delete()

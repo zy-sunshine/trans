@@ -3,7 +3,7 @@ from trans.utils.base import SiteRequestHandler
 from trans.manage.forms import BookInfoForm, TocInfoForm, LangForm
 #include <stdlib.h>
 from trans.manage.models import User
-from trans.books.models import Lang, BookInfo, Paragraph, TocInfo
+from trans.books.models import Lang, BookInfo, Paragraph_Orig, Paragraph_Trans, TocInfo
 from django.template import Template
 from django.contrib import auth
 from datetime import datetime
@@ -102,7 +102,11 @@ class AddToc(SiteRequestHandler):
         for elem in results:
             isPara = elem.name == para_sep and True or False
             elem.attrs = ''
-            para = Paragraph(tocinfo_fk=tocinfo, 
+            # Clean attrs
+            for child in elem.findAll():
+                if child.name != 'img':
+                    child.attrs = ''
+            para = Paragraph_Orig(tocinfo_fk=tocinfo, 
                 lang_fk = lang_fk,
                 content = str(elem),
                 user = auth.get_user(self.request),
@@ -112,7 +116,7 @@ class AddToc(SiteRequestHandler):
             )
             para.save()
             i += 1
-        self.success('insert %s Paragraph' % i)
+        self.success('insert %s Paragraph_Orig' % i)
 
     def GET(self, book=''):
         form = TocInfoForm()
@@ -123,7 +127,7 @@ class EditToc(SiteRequestHandler):
     def GET(self, book='', toc=''):
         bookinfo = BookInfo.objects.get(slug=book)
         tocinfo = TocInfo.objects.get(bookinfo_fk=bookinfo, slug=toc)
-        para = Paragraph.objects.filter(tocinfo_fk=tocinfo, lang_fk=bookinfo.lang_orig_fk)
+        para = Paragraph_Orig.objects.filter(tocinfo_fk=tocinfo, lang_fk=bookinfo.lang_orig_fk)
         context = {'para': para}
         self.render('trans/manage/edittoc.html', context)
 
@@ -132,13 +136,13 @@ class DelToc(SiteRequestHandler):
         bookinfo = BookInfo.objects.get(slug=book)
         tocinfo = TocInfo.objects.get(bookinfo_fk=bookinfo, slug=toc)
         try:
-            Paragraph.objects.filter(tocinfo_fk=tocinfo, lang_fk=bookinfo.lang_orig_fk).delete()
+            Paragraph_Trans.objects.filter(tocinfo_fk=tocinfo).delete()
+            Paragraph_Orig.objects.filter(tocinfo_fk=tocinfo).delete()
         except:
             self.error('Can not delete toc: %s in book: %s' % (tocinfo.name, bookinfo.name))
         else:
             self.success('Success delete toc: %s in book: %s' % (tocinfo.name, bookinfo.name))
         tocinfo.delete()
-
 
 # class AddUser(SiteRequestHandler):
 #     def POST(self):

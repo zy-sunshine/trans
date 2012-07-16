@@ -15,7 +15,8 @@ urlpatterns = patterns('trans.manage.views',
 )
 urlpatterns += patterns('trans.manage.ajax',
 	url(r'^check/book_slug_unique/$', 'BookSlugUnique'),
-	url(r'^ajax/get_toclist/$', 'GetToclist')
+	url(r'^ajax/get_toclist/$', 'GetToclist'),
+    url(r'^ajax/del_paragraph/(?P<para_id>[^/]*)/$', 'DelParagraph'),
 )
 urlpatterns += patterns('trans.manage.authviews',
 	url(r'^login/$', 'Login', name='manage_login'),

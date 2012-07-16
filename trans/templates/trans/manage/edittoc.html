@@ -30,15 +30,15 @@
 <div class="column">
 {% for p in para %}
 <!-- <div>Tag: {{ p.tag }} Hero: {{ p.user }} Modify: {{ p.datetime }} </div> -->
-	<div class="portlet">
+	<div class="portlet" id="para_{{p.id}}">
 		<div class="para-info ">
-			<span class="label">tag</span>
+			<span class="label">{{ p.id }}</span>
 		</div>
 		<div class="para-opt">
 			<div class="btn-group">
 		      <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">{{ p.id }} P<span class="caret"></span></button>
 		      <ul class="dropdown-menu">
-		        <li><a href="#">Action</a></li>
+		        <li><a href="#" onclick="javascript:del_paragraph(this, {{ p.id }});return false;">Delete</a></li>
 		        <li><a href="#">Another action</a></li>
 		        <li><a href="#">Something else here</a></li>
 		        <li class="divider"></li>
