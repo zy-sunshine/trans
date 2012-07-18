@@ -127,7 +127,7 @@ class EditToc(SiteRequestHandler):
     def GET(self, book='', toc=''):
         bookinfo = BookInfo.objects.get(slug=book)
         tocinfo = TocInfo.objects.get(bookinfo_fk=bookinfo, slug=toc)
-        para = Paragraph_Orig.objects.filter(tocinfo_fk=tocinfo, lang_fk=bookinfo.lang_orig_fk)
+        para = Paragraph_Orig.objects.filter(tocinfo_fk=tocinfo, lang_fk=bookinfo.lang_orig_fk).order_by('order')
         context = {'para': para}
         self.render('trans/manage/edittoc.html', context)
 

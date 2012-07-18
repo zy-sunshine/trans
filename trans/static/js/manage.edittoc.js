@@ -4,45 +4,12 @@
 		});
 		$( "#sortable" ).disableSelection();
 	});*/
-function dialog(msg){
-	//$( "#dialog:ui-dialog" ).dialog( "destroy" );
-		$( '<div title="test title"><p>'+msg+'</p></div>' ).dialog({
-			modal: true,
-			buttons: {
-				Ok: function() {
-					$( this ).dialog( "close" );
-				}
-			}
-		});
-}
-function tooltip(msg){
-	var tip = $('<div class="quick-alert">'+msg+'</div>')
-        .css({
-        "position": "fixed",
-        "right": "0px",
-        "top": "100px",
-        "padding": "0.5em",
-        "background": "#FFA",
-        "border": "1px solid #A00",
-        "color": "#A00",
-        "font-weight": "bold",
-        })
-    tip.insertAfter( $("body") )
-		.fadeIn('slow', function(){
-			setTimeout( function() {
-				tip.fadeOut('slow', function() {
-					$(this).remove();
-				});
-			}, 500);
-		});
-	//.animate({opacity: 1.0}, 3000);
 
-	//$('<div>'+msg+'</div>').fadeIn('slow');
-}
+/*
 function del_paragraph(that, para_id){
 	var _item = $(that).closest('.portlet');
 	$.ajax({
-		url: "/manage/ajax/del_paragraph/"+para_id+"/",
+		url: "/manage/ajax/del_para/"+para_id+"/",
 		dataType: 'json',
 		async: false,
 		success: function(data) {
@@ -55,8 +22,62 @@ function del_paragraph(that, para_id){
 			tooltip('error');
 		}
 	});
+}*/
+var _del_paras = []
+function del_paragraph(that, para_id){
+	var _item = $(that).closest('.portlet');
+	if(_item){
+		_item.fadeOut('slow', function() {
+				$(this).remove();
+		});
+		//setTimeout(function(){
+			tooltip("success");
+		//}, 0);
+	}else{
+		//setTimeout(function(){
+			tooltip("failed");
+		//}, 0);
+	}
+	_del_paras.push(para_id);
 }
 
+function edit_paragraph(that, para_id){
+	id = "#para_" + para_id;
+	var content_elem = $(id).find(".para-content");
+	content = content_elem.text();
+	$( '<div title="modify Paragraph '+ para_id +'"><textarea rows="7" cols="80" id="m_content" >'+content+'</textarea></div>' ).dialog({
+		modal: true,
+		buttons: {
+			Ok: function() {
+				content_elem.text($(this).find("#m_content")[0].value);
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+}
+
+function info_paragraph(that, para_id){
+	$.get('/manage/ajax/info_para/',{'para_id': para_id}, function(data){
+		if(data['ret']){
+			tab = $(html_table_from_dict(data['data']));
+			tab.dialog({
+				autoOpen: false,
+				modal: true,
+				buttons: {
+					"Close": function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				close: function() {
+					
+				}
+			});
+			tab.dialog("open");
+		}else{
+			dialog('Error', data['msg']);
+		}
+	}, 'json');
+}
 $(function() {
 		$( ".column" ).sortable({
 			connectWith: ".column",
@@ -102,4 +123,34 @@ $(function() {
 		})
 		$( ".column" ).disableSelection();
 		//$("a[name='para_del']").bind('click', function(obj){
+
+		$("#submit_all").bind("click", function(obj){
+			var _dict = {'del': _del_paras, 'data': []};
+			_.each($(".portlet"), function(elem, idx){
+				id = $(elem).find(".label").text();
+				content = $(elem).find(".para-content").text();
+				_dict['data'].push({"id": id, "idx": idx, "content": content});
+			});
+			_tip = tooltip("operating...", true);
+			$.ajax({
+		        url: '/manage/ajax/save_paras/',
+		        type: 'POST',
+		        contentType: 'application/json; charset=utf-8',
+		        data: $.toJSON(_dict),
+		        dataType: 'json',
+		        success: function(result) {
+		        	if(result.ret){
+			        	_tip.innerText = 'success';
+		        	}else{
+		        		_tip.innerText = 'failed';
+		        	}
+		        	tooltip_fadeout(_tip, 500);
+		        },
+		        error: function(){
+		        	_tip.innerText = 'error';
+		        	tooltip_fadeout(this, 500);
+
+		        }
+		    });
+		});
 	});
